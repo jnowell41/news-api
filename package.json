@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "sass": "^1.20.1",
+    "typescript": "^3.4.5"
+  },
+  "scripts": {
+    "tsc": "tsc --watch",
+    "sass": "sass .:build --watch",
+    "build-js": "concurrently \"yarn run tsc\" \"yarn run sass\""
+  }
+}
