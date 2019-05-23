@@ -26,22 +26,38 @@ body .container .card {
   max-width: 500px;
   min-width: 250px;
   height: 500px;
-  margin: 20px 20px 20px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 3fr 2fr 1fr 2fr;
+  grid-template-areas: "image" "title" "heading" "description";
 }
 body .container .card #imageContainer {
   width: 100%;
   height: 200px;
   overflow: hidden;
   filter: grayscale(100%);
+  grid-area: image;
 }
 body .container .card #imageContainer img {
   width: 100%;
 }
 body .container .card #imageContainer:hover {
   filter: unset;
+}
+body .container .card h1 {
+  grid-area: title;
+}
+body .container .card #authorWithDate {
+  grid-area: heading;
+}
+body .container .card #description {
+  position: absolute;
+  height: auto;
+  background-color: paleturquoise;
+  display: none;
+}
+body .container .card .toggleDisplay {
+  display: block;
 }
 
 @media only screen and (min-width: 800px) {
