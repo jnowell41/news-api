@@ -26,12 +26,14 @@ const imageChecker = (url) => {
     return url ? url : "https://picsum.photos/500/350"
 };
 
-const changeBbcSource = (source) => {
+const changeSource = (source) => {
     let convertedSource = "";
     if (source.includes("https://www.facebook.com/bbcnews")) 
      return convertedSource = "BBC News";
     else if(source.includes("https://www.facebook.com/DailyMailCeleb"))
-    return convertedSource = "Daily Mail";
+    return convertedSource = "Daily Mail Celebs";
+    else if(source.includes("https://www.facebook.com/DailyMail"))
+    return convertedSource = "Daily Mail"
      else {
          return source;
      }
@@ -47,6 +49,12 @@ function convertDate(date) {
         return array.join("");
 }
 
+// function revealDescription() {
+//     let input = document.getElementById("decriptionContainer");
+//         input.style.marginLeft="0vw";
+//         input.innerHTML=element.content;
+// }
+
 fetch("https://newsapi.org/v2/top-headlines?country=gb&apiKey="+APIkey)
 .then(res => res.json())
 .then(data => {let eachArticle =  data.articles.map((element, index) => ( 
@@ -56,7 +64,7 @@ fetch("https://newsapi.org/v2/top-headlines?country=gb&apiKey="+APIkey)
     </div>
     <h1>${element.title ? element.title : "Unable to retrieve data"}</h1>
     <p id ="authorWithDate">
-    Published by ${element.author ? changeBbcSource(element.author) : "Unknown"} <br/>
+    Published by ${element.author ? changeSource(element.author) : "Unknown"} <br/>
     ${element.publishedAt ? convertDate(element.publishedAt) : ""}
     </p>
     <p id = "description">${element.description ? element.description : "Unable to retrieve data"}</p>
@@ -74,22 +82,6 @@ function getInput(value) {
     console.log(value);
     return value;
 };
-
-// function filterData(input) {
-//     if (input===JSON.stringify(allCards).charAt(input) {
-//         document.getElementsByClassName("container")[0].innerHTML += `<div key = ${index} class = "card">
-//         <div id = "imageContainer" >
-//         <img src = ${imageChecker(this.element.urlToImage)} />
-//         </div>
-//         <h1>${this.element.title ? this.element.title : "Unable to retrieve data"}</h1>
-//         <p id ="authorWithDate">
-//         Published by ${this.element.author ? this.element.author : "Unknown"} <br/>
-//         ${this.element.publishedAt ? this.element.publishedAt : ""}
-//         </p>
-//         <p id = "description">${this.element.description ? this.element.description : "Unable to retrieve data"}</p>
-//         </div>`
-//     }
-}
 
 
 var container = document.getElementsByClassName("container");

@@ -33,6 +33,16 @@ body #SearchBar:focus {
   border: none;
   outline: none;
 }
+body #descriptionContainer {
+  position: fixed;
+  background-color: honeydew;
+  width: 50vw;
+  bottom: 75px;
+  top: 75px;
+  margin-left: -100vw;
+  z-index: 1000;
+  transition: 0.3s;
+}
 body .container {
   width: 100%;
   display: flex;
