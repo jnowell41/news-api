@@ -11,44 +11,62 @@ body {
   align-items: center;
   width: 100vw;
   height: auto;
+  background-color: honeydew;
+}
+body label {
+  align-self: flex-start;
+  margin: 20px 20px 20px 20px;
+  margin-left: 10%;
+  opacity: 0.6;
+  font-size: 0.8em;
+  font-weight: 600;
 }
 body #SearchBar {
   width: 80%;
   height: 35px;
+  background-color: transparent;
+  border: 4px transparent solid;
+  border-bottom: 2px black solid;
+  opacity: 0.6;
+}
+body #SearchBar:focus {
+  border: none;
 }
 body .container {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 body .container .card {
   max-width: 500px;
   min-width: 250px;
-  height: 500px;
+  margin: 20px 20px 20px 20px;
   display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 3fr 2fr 1fr 2fr;
-  grid-template-areas: "image" "title" "heading" "description";
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto auto;
+  grid-template-areas: "image title" "image heading" "description description";
 }
 body .container .card #imageContainer {
-  width: 100%;
-  height: 200px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
   overflow: hidden;
-  filter: grayscale(100%);
   grid-area: image;
 }
 body .container .card #imageContainer img {
-  width: 100%;
-}
-body .container .card #imageContainer:hover {
-  filter: unset;
+  width: 300px;
 }
 body .container .card h1 {
   grid-area: title;
+  font-size: 0.8em;
+  margin: 0 0 0 20px;
 }
 body .container .card #authorWithDate {
   grid-area: heading;
+  font-size: 0.8em;
+  margin: 0 0 0 20px;
 }
 body .container .card #description {
   position: absolute;
