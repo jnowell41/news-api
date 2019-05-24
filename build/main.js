@@ -22,6 +22,11 @@ function convertDate(date) {
     }
     return array.join("");
 }
+var openDescription = function () {
+    event.target.addEventListener("click", function () {
+        document.getElementById("descriptionContainer").style.marginLeft = "0vw";
+    });
+};
 // function revealDescription() {
 //     let input = document.getElementById("decriptionContainer");
 //         input.style.marginLeft="0vw";
@@ -29,15 +34,20 @@ function convertDate(date) {
 // }
 fetch("https://newsapi.org/v2/top-headlines?country=gb&apiKey=" + APIkey)
     .then(function (res) { return res.json(); })
-    .then(function (data) { return data.articles.map(function (element, index) { return (document.getElementsByClassName("container")[0].innerHTML += "<div key = " + index + " class = \"card\">\n    <div id = \"imageContainer\" >\n    <img src = " + imageChecker(element.urlToImage) + " />\n    </div>\n    <a href=\"" + element.url + " target=\"blank\"><h1>" + (element.title ? element.title : "Unable to retrieve data") + "</h1></a>\n    <p id =\"authorWithDate\">\n    Published by " + (element.author ? changeSource(element.author) : "Unknown") + " <br/>\n    " + (element.publishedAt ? convertDate(element.publishedAt) : "") + "\n    </p>\n    <p id = \"description\">" + (element.description ? element.description : "Unable to retrieve data") + "</p>\n    </div>"); }); });
+    .then(function (data) { return data.articles.map(function (element, index) { return (document.getElementsByClassName("container")[0].innerHTML += "<div key = " + index + " class = \"card\">\n    <div id = \"imageContainer\" onclick=\"" + openDescription + "\">\n    <img src = " + imageChecker(element.urlToImage) + " />\n    </div>\n    <a href=\"" + element.url + " target=\"blank\"><h1>" + (element.title ? element.title : "Unable to retrieve data") + "</h1></a>\n    <p id =\"authorWithDate\">\n    Published by " + (element.author ? changeSource(element.author) : "Unknown") + " <br/>\n    " + (element.publishedAt ? convertDate(element.publishedAt) : "") + "\n    <br/>\n    <span id=\"readMore\">Read more...</span>\n    </p>\n    </div>\n    <div id=\"descriptionContainer\">\n    <p>" + (element.description ? element.description : "Unable to retrieve data") + "</p>\n    </div>"); }); });
 //tracer bullet on input field value, needs to be passed as a filter for article contents 
 var allCards = document.querySelectorAll(".card");
-console.log(document.getElementsByClassName(".card").length); // returns 0, why?
+var biggerDescription = document.getElementById("#readMore");
+biggerDescription.addEventListener("click", function () {
+    console.log(biggerDescription);
+});
 function getInput(value) {
     console.log(value);
     return value;
 }
 ;
-var container = document.getElementsByClassName("container");
-console.log(JSON.stringify(container)); //comes out as an empty object, why?
+//tasks left to do:
+// 1.) reveal description on click
+// 2.) descriptionContainer needs to contain corresponding description etc.
+// 
 //# sourceMappingURL=main.js.map

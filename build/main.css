@@ -11,13 +11,14 @@ body {
   align-items: center;
   width: 100vw;
   height: auto;
-  background-color: honeydew;
+  background-color: black;
 }
 body label {
   align-self: flex-start;
   margin: 20px 20px 20px 20px;
   margin-left: 10%;
-  opacity: 0.6;
+  opacity: 0.8;
+  color: white;
   font-size: 0.8em;
   font-weight: 600;
 }
@@ -26,22 +27,12 @@ body #SearchBar {
   height: 35px;
   background-color: transparent;
   border: 4px transparent solid;
-  border-bottom: 2px black solid;
-  opacity: 0.6;
+  border-bottom: 2px white solid;
+  opacity: 0.8;
 }
 body #SearchBar:focus {
   border: none;
   outline: none;
-}
-body #descriptionContainer {
-  position: fixed;
-  background-color: honeydew;
-  width: 50vw;
-  bottom: 75px;
-  top: 75px;
-  margin-left: -100vw;
-  z-index: 1000;
-  transition: 0.3s;
 }
 body .container {
   width: 100%;
@@ -55,9 +46,17 @@ body .container .card {
   min-width: 200px;
   margin: 20px 20px 20px 20px;
   display: grid;
+  color: palegoldenrod;
+  line-height: 20px;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: auto auto;
-  grid-template-areas: "image title" "image heading" "description description";
+  grid-template-rows: 50% 50%;
+  grid-template-areas: "image title" "image heading";
+  padding: 20px;
+  transition: 0.1s;
+  border-bottom: 3px transparent solid;
+}
+body .container .card:hover {
+  border-bottom: 3px #7b699c solid;
 }
 body .container .card #imageContainer {
   width: 100px;
@@ -71,7 +70,7 @@ body .container .card #imageContainer img {
 }
 body .container .card a {
   text-decoration: none;
-  color: black;
+  color: #a0ddf0;
 }
 body .container .card a:hover {
   cursor: pointer;
@@ -80,16 +79,29 @@ body .container .card h1 {
   grid-area: title;
   font-size: 0.8em;
   margin: 0 0 0 20px;
+  margin-top: 10px;
 }
 body .container .card #authorWithDate {
   grid-area: heading;
   font-size: 0.8em;
   margin: 0 0 0 20px;
 }
-body .container .card #description {
-  background-color: paleturquoise;
-  display: none;
-  grid-area: description;
+body .container .card #readMore {
+  font-style: italic;
+}
+body .container #descriptionContainer {
+  width: 75vw;
+  height: 100vh;
+  position: fixed;
+  margin-left: -100vw;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+}
+body .container #descriptionContainer p {
+  width: 80%;
 }
 body footer {
   width: 80%;

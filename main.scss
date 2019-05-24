@@ -14,13 +14,14 @@ body {
     align-items:center;
     width:100vw;
     height:auto;
-    background-color: honeydew;
+    background-color: black;
 
     label {
         align-self: flex-start;
         margin:$globalmargin;
         margin-left:10%;
-        opacity:0.6;
+        opacity:0.8;
+        color:white;
         font-size:0.8em;
         font-weight:600;
     }
@@ -30,22 +31,12 @@ body {
         height:35px;
         background-color: transparent;
         border:4px transparent solid;
-        border-bottom: 2px black solid;
-        opacity:0.6;
+        border-bottom: 2px white solid;
+        opacity:0.8;
         &:focus {
             border:none;
             outline: none;
         }
-    }
-    #descriptionContainer {
-        position:fixed;
-        background-color:honeydew;
-        width:50vw;
-        bottom:75px;
-        top:75px;
-        margin-left:-100vw;
-        z-index:1000;
-        transition:0.3s;
     }
     .container {
         width:100%;
@@ -58,16 +49,19 @@ body {
             max-width:500px;
             min-width:200px;
             margin:$globalmargin;
-            // margin: $globalmargin;
-            // display:flex;
-            // flex-direction: column;
-            // justify-content: flex-start;
             display:grid;
+            color:palegoldenrod;
+            line-height: 20px;
             grid-template-columns: 1fr 3fr;
-            grid-template-rows: auto auto;
+            grid-template-rows:50% 50%;
             grid-template-areas: "image title"
-            "image heading"
-            "description description";
+            "image heading";
+            padding:20px;
+            transition:0.1s;
+            border-bottom:3px transparent solid;
+            &:hover {
+                border-bottom:3px rgb(123, 105, 156) solid;
+            }
 
             #imageContainer {
                 width: 100px;
@@ -81,7 +75,7 @@ body {
             }
             a {
                 text-decoration: none;
-                color:black;
+                color:rgb(160, 221, 240);
                 &:hover {
                     cursor: pointer;
                 }
@@ -90,16 +84,30 @@ body {
                 grid-area: title;
                 font-size:0.8em;
                 margin:$insideTextMargin;
+                margin-top:10px;
             }
             #authorWithDate {
                 grid-area: heading;
                 font-size:0.8em;
                 margin:$insideTextMargin;
             }
-            #description {
-                background-color:paleturquoise;
-                display:none;
-                grid-area: description;
+            #readMore {
+                font-style: italic;
+            }
+        }
+        #descriptionContainer {
+            width:75vw;
+            height:100vh;
+            position:fixed;
+            margin-left:-100vw;
+            top:0;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            transition:0.2s;
+
+            p {
+                width:80%;
             }
         }
     }

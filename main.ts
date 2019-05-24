@@ -49,6 +49,12 @@ function convertDate(date) {
         return array.join("");
 }
 
+const openDescription = () => {
+    event.target.addEventListener("click",function() {
+        document.getElementById("descriptionContainer").style.marginLeft="0vw";
+    })
+}
+
 // function revealDescription() {
 //     let input = document.getElementById("decriptionContainer");
 //         input.style.marginLeft="0vw";
@@ -59,29 +65,37 @@ fetch("https://newsapi.org/v2/top-headlines?country=gb&apiKey="+APIkey)
 .then(res => res.json())
 .then(data => data.articles.map((element, index) => ( 
     document.getElementsByClassName("container")[0].innerHTML += `<div key = ${index} class = "card">
-    <div id = "imageContainer" >
+    <div id = "imageContainer" onclick="${openDescription}">
     <img src = ${imageChecker(element.urlToImage)} />
     </div>
     <a href="${element.url} target="blank"><h1>${element.title ? element.title : "Unable to retrieve data"}</h1></a>
     <p id ="authorWithDate">
     Published by ${element.author ? changeSource(element.author) : "Unknown"} <br/>
     ${element.publishedAt ? convertDate(element.publishedAt) : ""}
+    <br/>
+    <span id="readMore">Read more...</span>
     </p>
-    <p id = "description">${element.description ? element.description : "Unable to retrieve data"}</p>
+    </div>
+    <div id="descriptionContainer">
+    <p>${element.description ? element.description : "Unable to retrieve data"}</p>
     </div>`
 )));
 
 //tracer bullet on input field value, needs to be passed as a filter for article contents 
 
 let allCards = document.querySelectorAll(".card");
+const biggerDescription = document.getElementById("#readMore");
 
-console.log(document.getElementsByClassName(".card").length) // returns 0, why?
+biggerDescription.addEventListener("click", function() {
+    console.log(biggerDescription);
+})
 
 function getInput(value) {
     console.log(value);
     return value;
 };
 
-
-var container = document.getElementsByClassName("container");
-console.log(JSON.stringify(container)); //comes out as an empty object, why?
+//tasks left to do:
+// 1.) reveal description on click
+// 2.) descriptionContainer needs to contain corresponding description etc.
+// 
