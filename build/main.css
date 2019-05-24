@@ -52,7 +52,7 @@ body .container {
 }
 body .container .card {
   max-width: 500px;
-  min-width: 250px;
+  min-width: 200px;
   margin: 20px 20px 20px 20px;
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -69,6 +69,13 @@ body .container .card #imageContainer {
 body .container .card #imageContainer img {
   width: 300px;
 }
+body .container .card a {
+  text-decoration: none;
+  color: black;
+}
+body .container .card a:hover {
+  cursor: pointer;
+}
 body .container .card h1 {
   grid-area: title;
   font-size: 0.8em;
@@ -80,13 +87,9 @@ body .container .card #authorWithDate {
   margin: 0 0 0 20px;
 }
 body .container .card #description {
-  position: absolute;
-  height: auto;
   background-color: paleturquoise;
   display: none;
-}
-body .container .card .toggleDisplay {
-  display: block;
+  grid-area: description;
 }
 body footer {
   width: 80%;

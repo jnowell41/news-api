@@ -57,20 +57,19 @@ function convertDate(date) {
 
 fetch("https://newsapi.org/v2/top-headlines?country=gb&apiKey="+APIkey)
 .then(res => res.json())
-.then(data => {let eachArticle =  data.articles.map((element, index) => ( 
+.then(data => data.articles.map((element, index) => ( 
     document.getElementsByClassName("container")[0].innerHTML += `<div key = ${index} class = "card">
     <div id = "imageContainer" >
     <img src = ${imageChecker(element.urlToImage)} />
     </div>
-    <h1>${element.title ? element.title : "Unable to retrieve data"}</h1>
+    <a href="${element.url} target="blank"><h1>${element.title ? element.title : "Unable to retrieve data"}</h1></a>
     <p id ="authorWithDate">
     Published by ${element.author ? changeSource(element.author) : "Unknown"} <br/>
     ${element.publishedAt ? convertDate(element.publishedAt) : ""}
     </p>
     <p id = "description">${element.description ? element.description : "Unable to retrieve data"}</p>
     </div>`
-))});
-console.log(myData);
+)));
 
 //tracer bullet on input field value, needs to be passed as a filter for article contents 
 
