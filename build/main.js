@@ -32,20 +32,20 @@ var openDescription = function () {
 //         input.style.marginLeft="0vw";
 //         input.innerHTML=element.content;
 // }
+var myOutput = [];
 fetch("https://newsapi.org/v2/top-headlines?country=gb&apiKey=" + APIkey)
     .then(function (res) { return res.json(); })
-    .then(function (data) { return data.articles.map(function (element, index) { return (document.getElementsByClassName("container")[0].innerHTML += "<div key = " + index + " class = \"card\">\n    <div id = \"imageContainer\" onclick=\"" + openDescription + "\">\n    <img src = " + imageChecker(element.urlToImage) + " />\n    </div>\n    <a href=\"" + element.url + " target=\"blank\"><h1>" + (element.title ? element.title : "Unable to retrieve data") + "</h1></a>\n    <p id =\"authorWithDate\">\n    Published by " + (element.author ? changeSource(element.author) : "Unknown") + " <br/>\n    " + (element.publishedAt ? convertDate(element.publishedAt) : "") + "\n    <br/>\n    <span id=\"readMore\">Read more...</span>\n    </p>\n    </div>\n    <div id=\"descriptionContainer\">\n    <p>" + (element.description ? element.description : "Unable to retrieve data") + "</p>\n    </div>"); }); });
+    .then(function (data) { return data.articles.map(function (element, index) { return (document.querySelector(".container").innerHTML += "<div key = " + index + " class = \"card\">\n    <div id = \"imageContainer\" onclick=\"" + openDescription + "\">\n    <img src = " + imageChecker(element.urlToImage) + " />\n    </div>\n    <a href=\"" + element.url + " target=\"blank\"><h1>" + (element.title ? element.title : "Unable to retrieve data") + "</h1></a>\n    <p id =\"authorWithDate\">\n    " + (element.publishedAt ? convertDate(element.publishedAt) : "") + "\n    <br/>\n    <span id=\"readMore\">Read more...</span>\n    </p>\n    <div class=\"description\">\n    " + element.description + "\n    </div>\n    </div>"); }); });
 //tracer bullet on input field value, needs to be passed as a filter for article contents 
-var allCards = document.querySelectorAll(".card");
-var biggerDescription = document.getElementById("#readMore");
-biggerDescription.addEventListener("click", function () {
-    console.log(biggerDescription);
-});
-function getInput(value) {
-    console.log(value);
-    return value;
-}
-;
+// biggerDescription.addEventListener("click", function() {
+//     console.log(biggerDescription);
+// })
+// function getInput(value) {
+//     console.log(value);
+//     return value;
+// };
+var mydesc = document.getElementsByClassName(".description");
+console.log(mydesc);
 //tasks left to do:
 // 1.) reveal description on click
 // 2.) descriptionContainer needs to contain corresponding description etc.

@@ -11,7 +11,7 @@ body {
   align-items: center;
   width: 100vw;
   height: auto;
-  background-color: black;
+  background-color: #05201a;
 }
 body label {
   align-self: flex-start;
@@ -48,9 +48,9 @@ body .container .card {
   display: grid;
   color: palegoldenrod;
   line-height: 20px;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: 50% 50%;
-  grid-template-areas: "image title" "image heading";
+  grid-template-columns: 3fr 3fr;
+  grid-template-rows: 3fr 1fr;
+  grid-template-areas: "image title" "image date";
   padding: 20px;
   transition: 0.1s;
   border-bottom: 3px transparent solid;
@@ -59,8 +59,8 @@ body .container .card:hover {
   border-bottom: 3px #7b699c solid;
 }
 body .container .card #imageContainer {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   overflow: hidden;
   grid-area: image;
@@ -70,7 +70,7 @@ body .container .card #imageContainer img {
 }
 body .container .card a {
   text-decoration: none;
-  color: #a0ddf0;
+  color: white;
 }
 body .container .card a:hover {
   cursor: pointer;
@@ -82,26 +82,24 @@ body .container .card h1 {
   margin-top: 10px;
 }
 body .container .card #authorWithDate {
-  grid-area: heading;
+  grid-area: date;
   font-size: 0.8em;
   margin: 0 0 0 20px;
 }
 body .container .card #readMore {
   font-style: italic;
 }
-body .container #descriptionContainer {
-  width: 75vw;
-  height: 100vh;
-  position: fixed;
-  margin-left: -100vw;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.2s;
+body .container .card .description {
+  display: none;
+  position: absolute;
+  max-width: 500px;
+  min-width: 200px;
+  height: 100%;
+  background-color: black;
+  padding: 0 0 0 20px;
 }
-body .container #descriptionContainer p {
-  width: 80%;
+body .container .card .displayDesc {
+  display: block;
 }
 body footer {
   width: 80%;

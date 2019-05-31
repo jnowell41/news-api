@@ -14,7 +14,7 @@ body {
     align-items:center;
     width:100vw;
     height:auto;
-    background-color: black;
+    background-color: rgb(5, 32, 26);
 
     label {
         align-self: flex-start;
@@ -52,10 +52,10 @@ body {
             display:grid;
             color:palegoldenrod;
             line-height: 20px;
-            grid-template-columns: 1fr 3fr;
-            grid-template-rows:50% 50%;
+            grid-template-columns: 3fr 3fr;
+            grid-template-rows:3fr 1fr;
             grid-template-areas: "image title"
-            "image heading";
+            "image date";
             padding:20px;
             transition:0.1s;
             border-bottom:3px transparent solid;
@@ -64,8 +64,8 @@ body {
             }
 
             #imageContainer {
-                width: 100px;
-                height:100px;
+                width: 150px;
+                height:150px;
                 border-radius:50%;
                 overflow:hidden;
                 grid-area: image;
@@ -75,7 +75,7 @@ body {
             }
             a {
                 text-decoration: none;
-                color:rgb(160, 221, 240);
+                color:white;
                 &:hover {
                     cursor: pointer;
                 }
@@ -87,27 +87,24 @@ body {
                 margin-top:10px;
             }
             #authorWithDate {
-                grid-area: heading;
+                grid-area: date;
                 font-size:0.8em;
                 margin:$insideTextMargin;
             }
             #readMore {
                 font-style: italic;
             }
-        }
-        #descriptionContainer {
-            width:75vw;
-            height:100vh;
-            position:fixed;
-            margin-left:-100vw;
-            top:0;
-            display:flex;
-            justify-content: center;
-            align-items: center;
-            transition:0.2s;
-
-            p {
-                width:80%;
+            .description {
+                display:none;
+                position: absolute;
+                max-width:500px;
+                min-width:200px;
+                height:100%;
+                background-color:black;
+                padding:$insideTextMargin;
+            }
+            .displayDesc {
+                display:block;
             }
         }
     }
